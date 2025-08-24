@@ -5,6 +5,7 @@ from datetime import datetime
 
 class UserService(object):
 
+    @staticmethod
     def register(username, password):
 
         if User.query.filter_by(username=username).first():
@@ -14,3 +15,12 @@ class UserService(object):
         user.set_password(password=password)
         db.session.add(user)
         db.session.commit()
+    
+    @staticmethod
+    def login(username, password) -> User:
+        
+        user = User.query.filter_by(username=username).first()
+        if user is None or not user.check_password(password):
+            raise Exception("Username or Password Error!")
+
+        return user
