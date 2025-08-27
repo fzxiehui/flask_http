@@ -43,5 +43,11 @@ curl -X POST -H "Content-Type: application/json" -d '{"username": "root", "passw
 curl -X POST -H "Content-Type: application/json" -d '{"username": "root", "password": "root"}' http://127.0.0.1:5000/auth/login
 # {"code":200,"data":{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJyb290IiwiZXhwIjoxNzU2MDQ5Mjg3fQ.ds-vDrLzAPIqICHur2ukoGLA9nghhc64KSPvs_dRr_Q","username":"root"},"msg":"ok"}
 TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJyb290IiwiZXhwIjoxNzU2MDQ5Mjg3fQ.ds-vDrLzAPIqICHur2ukoGLA9nghhc64KSPvs_dRr_Q"
-curl -X POST -H "Content-Type: application/json" -d '{"username": "root", "password": "root"}' http://127.0.0.1:5000/auth/login_required
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -d '{"username": "root"}' http://127.0.0.1:5000/auth/login_required
+```
+
+- `get_ws_token`
+
+```shell
+curl -X GET -H "Authorization: Bearer $TOKEN" http://127.0.0.1:5000/auth/get_ws_token
 ```
