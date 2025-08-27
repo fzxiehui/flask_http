@@ -3,7 +3,7 @@ from flask import Blueprint, g, request
 from app.services import UserService
 from app.utils.decorators import handle_exceptions, require_json
 from app.utils import generate_token
-from app.utils.jwt import login_required
+from app.utils import login_required
 from app.utils.response import success
 
 auth_bp = Blueprint("auth", __name__, url_prefix="/auth")
@@ -49,7 +49,7 @@ def login():
 @auth_bp.route("/login_required", methods=["POST"])
 @handle_exceptions
 @login_required
-def login_required():
+def login_required_route():
 
     res = {
             "id": g.get("user_id"),

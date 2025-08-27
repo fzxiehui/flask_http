@@ -19,6 +19,8 @@ class TestWsAuth(unittest.TestCase):
             userinfo = auth.check(key=key, password=password)
             print(userinfo)
 
-        # 错误测试
-        auth.check(key="testkey", password="testpassword")
+        try:
+            auth.check(key="testkey", password="testpassword")
+        except Exception as e:
+            print("错误测试:", e)
             

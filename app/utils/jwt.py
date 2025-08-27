@@ -26,10 +26,11 @@ def decode_token(token):
         return None  # 非法token
 
 from functools import wraps
-from flask import request, jsonify
+from flask import request
+from flask import g
 
-def login_required(f):
-    @wraps(f)
+def login_required(func):
+    @wraps(func)
     def decorated(*args, **kwargs):
         token = None
         if "Authorization" in request.headers:
@@ -42,9 +43,8 @@ def login_required(f):
             return error(msg="Invalid or expired token", code=401)
         
         # 这里把 user.id 和 user.username 都放进 g 对象，方便后续使用
-        from flask import g
         g.user_id = data["id"]
         g.username = data["username"]
         
-        return f(*args, **kwargs)
+        return func(*args, **kwargs)
     return decorated
