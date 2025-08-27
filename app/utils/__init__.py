@@ -2,6 +2,7 @@
 from .decorators import handle_exceptions, require_json
 from .response import success, error
 from .jwt import login_required, generate_token
+from .singleton import SingletonMeta, ParametrizedSingletonMeta
 
 __all__ = [
         "handle_exceptions",
@@ -9,5 +10,7 @@ __all__ = [
         "success",
         "error",
         "login_required",
-        "generate_token"
+        "generate_token",
+        "SingletonMeta",
+        "ParametrizedSingletonMeta",
     ]

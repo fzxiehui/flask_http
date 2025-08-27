@@ -1,6 +1,6 @@
 from flask import Blueprint, g, request
 
-from app.services.user import UserService
+from app.services import UserService
 from app.utils.decorators import handle_exceptions, require_json
 from app.utils import generate_token
 from app.utils.jwt import login_required
