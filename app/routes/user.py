@@ -19,7 +19,6 @@ def register():
     data = request.json
     username = data.get("username", "")
     password = data.get("password", "")
-    print("debug")
 
     if not username or not password:
         raise Exception("username and password cannot be empty!")

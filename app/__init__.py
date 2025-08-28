@@ -7,6 +7,8 @@ from flask_cors import CORS
 
 from flask_jwt_extended import JWTManager
 
+from .ws import socketio
+
 migrate = Migrate()
 
 def create_app():
@@ -31,6 +33,8 @@ def create_app():
     db.init_app(app=app)
     migrate.init_app(app=app, db=db)
     register_routes(app)
+
+    socketio.init_app(app)
 
     @app.route("/", defaults={"path": ""})
     @app.route("/<path:path>")
