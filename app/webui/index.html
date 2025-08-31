@@ -1,5 +1,24 @@
+<!DOCTYPE html>
 <html>
-	<h1>
-		Hello HTML
-	</h1>
+<head>
+  <title>Socket.IO Chat Test</title>
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+</head>
+<body>
+  <h1>Chat Test</h1>
+  <script>
+    // 连接到命名空间 /chat
+    const socket = io("http://localhost:5000/chat");
+
+    socket.on("connect", () => {
+      console.log("Connected to /chat namespace");
+      // 发一条消息给服务器
+      socket.emit("message", { data: "Hello from browser" });
+    });
+
+    socket.on("message", (msg) => {
+      console.log("Got message:", msg);
+    });
+  </script>
+</body>
 </html>
