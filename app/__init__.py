@@ -4,6 +4,7 @@ from .routes import register_routes
 from flask_migrate import Migrate
 from app.models import db
 from flask_cors import CORS
+from app.utils import init_db
 
 from flask_jwt_extended import JWTManager
 
@@ -32,6 +33,7 @@ def create_app():
 
     db.init_app(app=app)
     migrate.init_app(app=app, db=db)
+    init_db(app=app)
     register_routes(app)
 
     socketio.init_app(app)

@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.installed.cfg
+*.egg
+instance/
+instance
+bin
+dist
+build
+venv
+venv/
+.env
+.git
+.gitignore
