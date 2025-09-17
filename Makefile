@@ -8,7 +8,7 @@ PIP = $(VENV)/bin/pip
 PYTEST = $(VENV)/bin/pytest
 
 IMAGE_NAME = test-flask-app
-VERSION ?= 1.0.0
+VERSION ?= 1.0.1
 DOCKER_HTTP_PROXY ?= http://172.17.0.1:7890
 DOCKER_HTTPS_PROXY ?= $(DOCKER_HTTP_PROXY)
 NO_PROXY ?= localhost,127.0.0.1

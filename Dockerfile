@@ -16,4 +16,8 @@ RUN pip install -r requirements.txt
 
 EXPOSE 5000
 
-CMD ["python", "main.py"]
+CMD sh -c "\
+    flask db init || echo 'flask db init already done'; \
+    flask db migrate -m 'init tables' || echo 'No changes to migrate'; \
+    flask db upgrade; \
+    python main.py"

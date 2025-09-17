@@ -4,7 +4,6 @@ from .response import success, error
 from .jwt import login_required, generate_token
 from .singleton import SingletonMeta, ParametrizedSingletonMeta
 
-from .migrate_db import init_db
 
 __all__ = [
         "handle_exceptions",
@@ -15,5 +14,4 @@ __all__ = [
         "generate_token",
         "SingletonMeta",
         "ParametrizedSingletonMeta",
-        "init_db",
     ]
